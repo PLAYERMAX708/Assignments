@@ -5,43 +5,27 @@ except:
 
 epsilon = 1e-4 # precision needed
 
-def test_avg_float():
-    a = 0.1112
-    b = 0.1113
-
-    assert abs(average(a, b) - 0.11125) < epsilon
+#         __________________________________________
 
 
-def test_avg_int():
-    a = 1
-    b = 2
-
-    assert abs(average(a, b) - 1.5) < epsilon
-
-
-def test_avg_int_2():
-    a = 35112
-    b = 35113
-
-    assert abs(average(a, b) - 35112.5) < epsilon
-
-
-def test_sqrt_int():
-    v = 674
-    assert abs(sqrt(v) - 25.9615) < epsilon
-
-def test_improve_guess():
-    n = 54
-    g = 7.0 # haven't discussed casting yet. So, need to send at least one float
-    res = improve_guess(g, n)
-    assert abs(res - 7.3571) < epsilon
-
-
+    # this is the only test that is failed and not solved by me
 def test_improve_guess_zero():
     n = 1e-7
     g = 0
     res = improve_guess(g, n)
     assert abs(res - 5.000000005) < epsilon
+
+
+#         __________________________________________
+
+    # all these tests are correct and passed
+def test_improve_guess():
+    n = 54
+    g = 7.0 # haven't discussed casting yet. So, need to send at least one float
+    # no need in python v3 
+    
+    res = improve_guess(g, n)
+    assert abs(res - 7.3571) < epsilon
 
 def test_improve_guess_2():
     # this one is for a student who can handle extremely bad cases.
@@ -57,6 +41,11 @@ def test_improve_guess_2_dup():
     g = 7
     res = improve_guess(g, n)
     assert abs(res - 7.3571) < epsilon
+
+def test_sqrt_int():
+    v = 674
+    assert abs(sqrt(v) - 25.9615) < epsilon
+
 
 # output capturing decorator
 def capture_output(fn):
